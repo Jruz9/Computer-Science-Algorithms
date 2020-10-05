@@ -9,7 +9,7 @@
 ## Objective
 
 #### Part 1 - ...
-* Ensure that all test cases in `src.test.com.github.perscholas` pass with 100% success rate. 
+* Ensure that all test cases in `src.test.com.github.Jruz9` pass with 100% success rate. 
 
 
 

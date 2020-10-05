@@ -1,4 +1,4 @@
-package com.github.perscholas;
+package com.github.Jruz9;
 
 import org.junit.Assert;
 import org.junit.Test;

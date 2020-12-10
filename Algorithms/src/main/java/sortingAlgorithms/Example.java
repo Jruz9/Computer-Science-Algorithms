@@ -7,7 +7,7 @@ public class Example {
     // the implmentation of this will be in the following examples of sort algorithm
 
     }
-    private static boolean lessThan(Comparable firstValue, Comparable secondValue)
+    public static boolean lessThan(Comparable firstValue, Comparable secondValue)
     {
         //compares if the first value is less than the second value
         //true if less than zero
@@ -15,7 +15,7 @@ public class Example {
         return firstValue.compareTo(secondValue)<0;
 
     }
-    private static void exchange(Comparable[] a, int i, int j)
+    public static void exchange(Comparable[] a, int i, int j)
     {
         Comparable t =a[i];
         a[i]=a[j];
@@ -33,8 +33,8 @@ public class Example {
     }
     public static void main(String arg[])
     {
-        String testString = "thisisastring";
-        String[] a=testString.split("");
+        String testString = "this is a string";
+        String[] a=testString.split(" ");
         sort(a);
         assert isSorted(a);
         System.out.println(a[0]);

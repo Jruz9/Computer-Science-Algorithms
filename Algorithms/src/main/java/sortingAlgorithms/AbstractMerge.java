@@ -6,19 +6,19 @@ public class AbstractMerge<data> extends Example {
     //this is a example of a normal merge sort;
 
 
-    private static  void merge(Comparable[] a, int first,int middle,int lastNumber)
+    public static  void merge(Comparable[] a, int firstNumber,int middleNumber,int lastNumber)
     {
-        int firstHalfOfArrayNumber =first;
-        int secondHalfNumber=middle+1;
+        int firstHalfOfArrayNumber =firstNumber;
+        int secondHalfNumber=middleNumber+1;
         Comparable[] secondArray=new Comparable[lastNumber];
 
-        for (int k=first; k<=lastNumber;k++)
+        for (int k=firstNumber; k<=lastNumber;k++)
         {
             secondArray[k]=a[k];
         }
-        for (int k=first;k<=lastNumber;k++)
+        for (int k=firstNumber;k<=lastNumber;k++)
         {
-            if(firstHalfOfArrayNumber>middle)
+            if(firstHalfOfArrayNumber>middleNumber)
             {
                 a[k]=secondArray[secondHalfNumber++];
             }
@@ -28,10 +28,11 @@ public class AbstractMerge<data> extends Example {
                 a[k]=secondArray[firstHalfOfArrayNumber++];
             }
 
-            //this last 2  else if and else are the most imporant due to doing most of the work.
+            //these last 2  if statements are the most important due to doing most of the work.
+            //This else if will look if the second half of the array is
             else if (lessThan(secondArray[secondHalfNumber],secondArray[firstHalfOfArrayNumber]))
             {
-                a[k]=secondArray[firstHalfOfArrayNumber++];
+                a[k]=secondArray[secondHalfNumber++];
             }
             else {
                 a[k]=secondArray[firstHalfOfArrayNumber++];

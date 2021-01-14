@@ -7,7 +7,7 @@ public class Queue<Item> implements Iterable<Item> {
     public Iterator<Item> iterator() {
         return new listIterator();
     }
-    private class  listIterator implements Iterator<Item>
+    private class   listIterator implements Iterator<Item>
     {
         private  Node current=firstNode;
 

@@ -4,29 +4,29 @@ import Graphs.Graph;
 import fundamentals.Queue;
 
 import java.util.Stack;
-///change the variable and give explainations for every part of the algorithm.
+///change the variable and give explanations for every part of the algorithm.
 public class breadthFirstPathsPractice {
-    private boolean[] marked;
-    private int[] edgeTo;
-    private final int s;
+    private boolean[] marked;   //Is a shortest path to this vertex known
+    private int[] edgeTo;       // Last vertex on known path to this vertex
+    private final int vertexToFind; //source
 
-    public breadthFirstPathsPractice(Graph graph, int s){
-        marked =new boolean[graph.v()];
+    public breadthFirstPathsPractice(Graph graph, int vertexToFind){
+        marked =new boolean[graph.v()]; //
         edgeTo= new int[graph.v()];
-        this.s=s;
-        bfs(graph,s);
+        this.vertexToFind=vertexToFind;
+        bfs(graph,vertexToFind);
     }
-    private void bfs(Graph G,int s){
-        Queue<Integer> queue=new Queue<Integer>();
-        marked[s]=true;
-        queue.enqueue(s);
+    private void bfs(Graph graph,int vertexToFind){
+        Queue<Integer> queue=new Queue<Integer>();  //Queue is a First in first out
+        marked[vertexToFind]=true;      //Marks the source
+        queue.enqueue(vertexToFind);   //and puts it onto the queue
         while (!queue.isEmpty()){
-            int v=queue.dequeue();
-            for(int w: G.adj(v)){
-                if(!marked[w]){
-                    edgeTo[w]=v;
-                    marked[w]=true;
-                    queue.enqueue(w);
+            int v=queue.dequeue();      //remove the next vertex from the queue (removes the first number in line)
+            for(int vertexLocation: graph.adj(vertexToFind)){    // Looks for adjacentLists in the graph
+                if(!marked[vertexLocation]){    //for every unmarked adjacent vertex
+                    edgeTo[vertexLocation]=v;   // mark it because path is known
+                    marked[vertexLocation]=true;    //and add it to the queue
+                    queue.enqueue(vertexLocation);
                 }
             }
         }
@@ -34,17 +34,18 @@ public class breadthFirstPathsPractice {
     public boolean hasPathTo(int v){
         return marked[v];
     }
-    public Iterable<Integer>pathTo(int v){
-        if (!hasPathTo(v)){
+
+    public Iterable<Integer>pathTo(int vertex){
+        if (!hasPathTo(vertex)){
             return null;
         }
 
         Stack<Integer> path=new Stack<Integer>();
 
-        for (int x=v; x !=s; x=edgeTo[x]){
+        for (int x=vertex; x !=vertexToFind; x=edgeTo[x]){
             path.push(x);
         }
-        path.push(s);
+        path.push(vertexToFind);
         return path;
     }
 }
